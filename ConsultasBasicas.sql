@@ -39,3 +39,9 @@ JOIN
     detalles_pedidos 
 ON 
     pedidos.pedido_id = detalles_pedidos.pedido_id;
+
+-- 7. Encuentra el nombre y el precio del producto más caro en la base de datos.
+
+SELECT nombre, precio
+FROM productos
+WHERE precio = (SELECT MAX(precio) FROM productos);
