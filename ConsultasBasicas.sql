@@ -63,3 +63,7 @@ SELECT categoria, COUNT(*) FROM productos GROUP BY categoria;
 -- mostrando solo el nombre, el precio y su respectivo precio en USD.
 SELECT nombre,precio / 4000 FROM productos
 WHERE (precio / 4000)>75;
+
+-- 12. Lista todos los proveedores registrados.
+
+SELECT * FROM proveedores
