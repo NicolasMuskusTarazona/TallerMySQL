@@ -7,3 +7,8 @@ SELECT * FROM usuarios;
 
 SELECT nombre,email,ciudad FROM usuarios
 WHERE ciudad = 'Madrid';
+
+-- 3. Obtén una lista de productos con un precio mayor a $100.000, mostrando solo el nombre y el precio.
+
+SELECT nombre,precio FROM productos
+WHERE precio >100000;
