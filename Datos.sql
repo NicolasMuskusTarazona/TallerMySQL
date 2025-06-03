@@ -1,7 +1,6 @@
--- Tipos de usuarios
+-- Active: 1748978904024@@127.0.0.1@3307@taller
 INSERT INTO tipos_usuarios(nombre) VALUES ('Cliente'), ('Empleado');
 
--- Clientes
 INSERT INTO usuarios (
     tipo_id,
     nombre,
@@ -36,7 +35,6 @@ INSERT INTO usuarios (
     1, 'Juan Quiroga', 'juan.quiroga@gmail.com', '+57 3001234567', 'Cra 10 #45-20', 'Bogotá', 'Colombia', '2025-06-01'
 );
 
--- Empleados
 INSERT INTO usuarios (
     tipo_id,
     nombre,
@@ -75,125 +73,7 @@ INSERT INTO usuarios (
     salario
 ) VALUES
     (
-      (SELECT usuario_id FROM usuarios WHERE email = 'carlos.lopez@empresa.com'),
-      'Gerente de Ventas',    '2020-05-10', 3500000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'marta.fernandez@empresa.com'),
-      'Asistente de Ventas',  '2021-08-20', 2200000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'sergio.molina@empresa.com'),
-      'Representante de Ventas','2022-01-11',2500000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'teresa.ortega@empresa.com'),
-      'Asistente de Marketing','2021-04-15',2100000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'rafael.castro@empresa.com'),
-      'Analista de Datos',     '2020-12-05',2800000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'gloria.morales@empresa.com'),
-      'Ejecutiva de Cuentas',  '2023-02-10',2400000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'pablo.vega@empresa.com'),
-      'Supervisor de Ventas',  '2022-10-23',2600000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'raquel.sanchez@empresa.com'),
-      'Gerente de Finanzas',   '2019-11-07',4000000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'luis.ramos@empresa.com'),
-      'Auxiliar Administrativo','2021-03-18',2000000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'natalia.ruiz@empresa.com'),
-      'Desarrolladora',        '2022-07-30',3000000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'daniel.lara@empresa.com'),
-      'Representante de Ventas','2020-11-15',2600000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'manuel.garcia@empresa.com'),
-      'Encargado de Almacén',  '2021-01-18',2200000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'jose.martinez@empresa.com'),
-      'Especialista de Soporte','2022-06-25',2100000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'patricia.leon@empresa.com'),
-      'Gerente de Proyectos',  '2018-10-05',4200000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'lola.diaz@empresa.com'),
-      'Coordinadora de Logística','2019-08-19',3100000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'juan.cruz@empresa.com'),
-      'Asistente Administrativo','2020-12-01',1900000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'paula.rueda@empresa.com'),
-      'Jefe de Compras',       '2018-05-10',3600000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'miguel.gil@empresa.com'),
-      'Consultor de Negocios', '2021-04-12',2900000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'rocio.lopez@empresa.com'),
-      'Especialista en Ventas','2022-02-20',2300000.00
-    ),
-    (
-      (SELECT usuario_id FROM usuarios WHERE email = 'andres.navas@empresa.com'),
-      'Desarrollador',         '2021-12-13',3100000.00
-    );
-
-    INSERT INTO usuarios (
-    tipo_id,
-    nombre,
-    email,
-    telefono,
-    direccion,
-    ciudad,
-    pais,
-    fecha_registro
-) VALUES
-    (2, 'Carlos López',     'carlos.lopez@empresa.com',      NULL, NULL, NULL, NULL, '2020-05-10'),
-    (2, 'Marta Fernández',  'marta.fernandez@empresa.com',   NULL, NULL, NULL, NULL, '2021-08-20'),
-    (2, 'Sergio Molina',    'sergio.molina@empresa.com',     NULL, NULL, NULL, NULL, '2022-01-11'),
-    (2, 'Teresa Ortega',    'teresa.ortega@empresa.com',     NULL, NULL, NULL, NULL, '2021-04-15'),
-    (2, 'Rafael Castro',    'rafael.castro@empresa.com',     NULL, NULL, NULL, NULL, '2020-12-05'),
-    (2, 'Gloria Morales',   'gloria.morales@empresa.com',    NULL, NULL, NULL, NULL, '2023-02-10'),
-    (2, 'Pablo Vega',       'pablo.vega@empresa.com',        NULL, NULL, NULL, NULL, '2022-10-23'),
-    (2, 'Raquel Sánchez',   'raquel.sanchez@empresa.com',    NULL, NULL, NULL, NULL, '2019-11-07'),
-    (2, 'Luis Ramos',       'luis.ramos@empresa.com',        NULL, NULL, NULL, NULL, '2021-03-18'),
-    (2, 'Natalia Ruiz',     'natalia.ruiz@empresa.com',      NULL, NULL, NULL, NULL, '2022-07-30'),
-    (2, 'Daniel Lara',      'daniel.lara@empresa.com',       NULL, NULL, NULL, NULL, '2020-11-15'),
-    (2, 'Manuel García',    'manuel.garcia@empresa.com',     NULL, NULL, NULL, NULL, '2021-01-18'),
-    (2, 'José Martínez',    'jose.martinez@empresa.com',     NULL, NULL, NULL, NULL, '2022-06-25'),
-    (2, 'Patricia León',    'patricia.leon@empresa.com',     NULL, NULL, NULL, NULL, '2018-10-05'),
-    (2, 'Lola Díaz',        'lola.diaz@empresa.com',         NULL, NULL, NULL, NULL, '2019-08-19'),
-    (2, 'Juan Cruz',        'juan.cruz@empresa.com',         NULL, NULL, NULL, NULL, '2020-12-01'),
-    (2, 'Paula Rueda',      'paula.rueda@empresa.com',       NULL, NULL, NULL, NULL, '2018-05-10'),
-    (2, 'Miguel Gil',       'miguel.gil@empresa.com',        NULL, NULL, NULL, NULL, '2021-04-12'),
-    (2, 'Rocío López',      'rocio.lopez@empresa.com',       NULL, NULL, NULL, NULL, '2022-02-20'),
-    (2, 'Andrés Navas',     'andres.navas@empresa.com',      NULL, NULL, NULL, NULL, '2021-12-13');
-    
-    INSERT INTO empleados (
-    usuario_id,
-    puesto,
-    fecha_contratacion,
-    salario
-) VALUES
-    (
-        (SELECT usuario_id FROM usuarios WHERE email = 'carlos.lopez@empresa.com'),
+    (SELECT usuario_id FROM usuarios WHERE email = 'carlos.lopez@empresa.com'),
         'Gerente de Ventas',    '2020-05-10', 3500000.00
     ),
     (
@@ -236,7 +116,7 @@ INSERT INTO usuarios (
         (SELECT usuario_id FROM usuarios WHERE email = 'daniel.lara@empresa.com'),
         'Representante de Ventas','2020-11-15',2600000.00
     ),
-    (
+    (   
         (SELECT usuario_id FROM usuarios WHERE email = 'manuel.garcia@empresa.com'),
         'Encargado de Almacén',  '2021-01-18',2200000.00
     ),
@@ -273,7 +153,6 @@ INSERT INTO usuarios (
         'Desarrollador',         '2021-12-13',3100000.00
     );
 
--- Proveedores
 INSERT INTO proveedores (
     nombre, email, telefono, direccion, ciudad, pais, fecha_registro
 ) VALUES
@@ -283,8 +162,6 @@ INSERT INTO proveedores (
     ('Accesorios y Más S.A.S.',       'accesorios@ymas.com',        '0342-5554321', 'Av. Central 67',     'Barranquilla','Colombia','2022-11-20'),
     ('Muebles & Diseño S.A.',         'contacto@mueblesydiseno.com','0345-5558765', 'Calle Muebles 12',   'Cartagena','Colombia','2023-02-25'), ('Proveedor XYZ S.A.S.','contacto@provedorxyz.com', '+57 3107654321','Av. Comercio 123', 'Medellín', 'Colombia','2025-05-20'
 );
-
--- Productos
 
 INSERT INTO productos (nombre, categoria, precio, stock) VALUES
 ('Laptop',           'Electrónica',  4148678.51, 50),
@@ -308,8 +185,6 @@ INSERT INTO productos (nombre, categoria, precio, stock) VALUES
 ('Bicicleta',        'Deporte',      1244616.00, 15),
 ('Reloj Inteligente','Electrónica',   622308.00, 100),
 ('Auricular Bluetooth Pro','Accesorios',259900.00,75);
-
--- Provedor por Producto
 
 INSERT INTO proveedores_productos (proveedor_id, producto_id) VALUES
     (1, 1),
@@ -336,7 +211,6 @@ INSERT INTO proveedores_productos (proveedor_id, producto_id) VALUES
     (5, 19),
     (2, 20);
 
--- Pedidos
 INSERT INTO pedidos (cliente_id, empleado_id, fecha_pedido, estado) VALUES
 (1, 1, '2023-02-10', 'Entregado'),
 (2, 2, '2023-02-12', 'Pendiente'),
@@ -357,72 +231,15 @@ INSERT INTO pedidos (cliente_id, empleado_id, fecha_pedido, estado) VALUES
 (17, 17, '2023-09-10', 'Pendiente'),
 (18, 18, '2023-09-25', 'Enviado'),
 (19, 19, '2023-10-05', 'Cancelado'),
-(20, 20, '2023-10-18', 'Entregado');
+(20, 20, '2023-10-18', 'Entregado'),
+(21,1,'2025-06-02','Pendiente'),
+(21,1,'2025-06-05','Entregado'),
+(21,1,'2025-06-10','Pendiente'),
+(21,1,'2025-06-12','Cancelado'),
+(21,1,'2025-06-15','Entregado'),
+(21,1,'2025-06-18','Pendiente'),
+(21,1,'2025-06-20','Entregado');
 
-INSERT INTO pedidos (
-    cliente_id,
-    empleado_id,
-    fecha_pedido,
-    estado
-) VALUES
-    (
-      (SELECT usuario_id 
-        FROM usuarios 
-        WHERE email = 'juan.perez@example.com'),
-      1,
-      '2025-06-02',
-      'Pendiente'
-    ),
-    (
-      (SELECT usuario_id 
-        FROM usuarios 
-        WHERE email = 'juan.perez@example.com'),
-      1,
-      '2025-06-05',
-      'Entregado'
-    ),
-    (
-      (SELECT usuario_id 
-        FROM usuarios 
-        WHERE email = 'juan.perez@example.com'),
-      1,
-      '2025-06-10',
-      'Pendiente'
-    ),
-    (
-      (SELECT usuario_id 
-        FROM usuarios 
-        WHERE email = 'juan.perez@example.com'),
-      1,
-      '2025-06-12',
-      'Cancelado'
-    ),
-    (
-      (SELECT usuario_id 
-        FROM usuarios 
-        WHERE email = 'juan.perez@example.com'),
-      1,
-      '2025-06-15',
-      'Entregado'
-    ),
-    (
-      (SELECT usuario_id 
-        FROM usuarios 
-        WHERE email = 'juan.perez@example.com'),
-      1,
-      '2025-06-18',
-      'Pendiente'
-    ),
-    (
-      (SELECT usuario_id 
-        FROM usuarios 
-        WHERE email = 'juan.perez@example.com'),
-      1,
-      '2025-06-20',
-      'Entregado'
-    );
-
--- Detalles pedidos
 INSERT INTO detalles_pedidos (pedido_id, producto_id, cantidad, precio_unitario) VALUES
 (1,  1,  2,  4148678.51),
 (2,  2,  1,  2074318.51),
