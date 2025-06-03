@@ -1,4 +1,4 @@
--- Active: 1748981232652@@127.0.0.1@3307@tallersql
+-- Active: 1748978904024@@127.0.0.1@3307@taller
 INSERT INTO tipos_usuarios(nombre) VALUES ('Cliente'), ('Empleado');
 
 INSERT INTO usuarios (

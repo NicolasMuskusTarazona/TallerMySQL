@@ -1,3 +1,4 @@
+-- Active: 1748978904024@@127.0.0.1@3307@taller
 
 -- 1. Consulta todos los datos de la tabla `usuarios` para ver la lista completa de clientes.
 
@@ -49,3 +50,7 @@ WHERE precio = (SELECT MAX(precio) FROM productos);
 -- 8. Obtén el total de pedidos realizados por cada cliente, mostrando el ID del cliente y el total de pedidos.
 
 SELECT cliente_id, COUNT(*) FROM pedidos GROUP BY cliente_id;
+
+-- 9. Calcula el promedio de salario de todos los empleados en la empresa.
+
+SELECT AVG(salario) FROM empleados;
