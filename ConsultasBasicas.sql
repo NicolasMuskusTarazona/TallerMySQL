@@ -12,3 +12,10 @@ WHERE ciudad = 'Madrid';
 
 SELECT nombre,precio FROM productos
 WHERE precio >100000;
+
+-- 4. Encuentra todos los empleados que tienen un salario superior a $2.500.000, mostrando su nombre, puesto y salario. 
+
+SELECT usuarios.nombre,empleados.puesto, empleados.salario
+FROM usuarios
+JOIN empleados ON usuarios.usuario_id = empleados.usuario_id
+WHERE empleados.salario > 2500000;
