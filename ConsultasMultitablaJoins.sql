@@ -13,7 +13,7 @@ SELECT p.pedido_id, GROUP_CONCAT(CONCAT(po.nombre,  ',',po.categoria)) AS produc
 FROM pedidos AS p
 INNER JOIN detalles_pedidos AS dp ON p.pedido_id = dp.pedido_id
 INNER JOIN productos AS po ON dp.producto_id = po.producto_id
-GROUP BY p.pedido_id;
+GROUP BY p.pedido_id;()
 -- 3. Encuentra los nombres de los clientes y 
 -- los nombres de los empleados que gestionaron sus pedidos
 
@@ -22,4 +22,23 @@ FROM pedidos
 JOIN usuarios AS clientes ON pedidos.cliente_id = clientes.usuario_id
 JOIN usuarios AS empleados ON pedidos.empleado_id = empleados.usuario_id;
 
+-- 4. Muestra todos los pedidos y, si existen, los productos en cada pedido, 
+-- incluyendo los pedidos sin productos usando `LEFT JOIN`
 
+SELECT productos.nombre, pedidos.cliente_id, pedidos.empleado_id, pedidos.fecha_pedido, pedidos.estado
+FROM pedidos
+LEFT JOIN detalles_pedidos.pedido_id = pedidos.cliente_id
+
+
+SELECT 
+    productos.nombre AS Producto,
+    pedidos.cliente_id AS Cliente_id,
+    pedidos.empleado_id AS Empleado_id,
+    detalles_pedidos.cantidad AS Cantidad,
+    pedidos.fecha_pedido AS Fecha,
+    pedidos.estado AS Estado
+FROM pedidos
+LEFT JOIN detalles_pedidos
+ON pedidos.pedido_id = detalles_pedidos.pedido_id
+LEFT JOIN productos
+ON detalles_pedidos.producto_id = productos.producto_id;

@@ -66,7 +66,7 @@ INSERT INTO usuarios (
     (2, 'Rocío López',      'rocio.lopez@empresa.com',       NULL, NULL, NULL, NULL, '2022-02-20'),
     (2, 'Andrés Navas',     'andres.navas@empresa.com',      NULL, NULL, NULL, NULL, '2021-12-13');
     
-    INSERT INTO empleados (
+INSERT INTO empleados (
     usuario_id,
     puesto,
     fecha_contratacion,
