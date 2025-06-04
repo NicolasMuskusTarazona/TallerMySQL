@@ -25,11 +25,6 @@ JOIN usuarios AS empleados ON pedidos.empleado_id = empleados.usuario_id;
 -- 4. Muestra todos los pedidos y, si existen, los productos en cada pedido, 
 -- incluyendo los pedidos sin productos usando `LEFT JOIN`
 
-SELECT productos.nombre, pedidos.cliente_id, pedidos.empleado_id, pedidos.fecha_pedido, pedidos.estado
-FROM pedidos
-LEFT JOIN detalles_pedidos.pedido_id = pedidos.cliente_id
-
-
 SELECT 
     productos.nombre AS Producto,
     pedidos.cliente_id AS Cliente_id,
@@ -41,4 +36,18 @@ FROM pedidos
 LEFT JOIN detalles_pedidos
 ON pedidos.pedido_id = detalles_pedidos.pedido_id
 LEFT JOIN productos
+ON detalles_pedidos.producto_id = productos.producto_id;
+
+-- 5. Encuentra los productos y, si existen, 
+-- los detalles de pedidos en los que no se ha 
+-- incluido el producto usando `RIGHT JOIN`.
+
+SELECT
+    productos.producto_id,
+    productos.nombre AS Nombre,
+    productos.precio AS Precio,
+    detalles_pedidos.cantidad AS Cantidad,
+    detalles_pedidos.detalle_id AS DetallePedido_id
+FROM detalles_pedidos
+RIGHT JOIN productos
 ON detalles_pedidos.producto_id = productos.producto_id;
