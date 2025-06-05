@@ -93,3 +93,12 @@ WHERE empleados.salario > (
     SELECT AVG(salario)
     FROM empleados
 );
+
+-- 9. Obtén los productos que generaron ingresos mayores al ingreso promedio por producto.
+
+SELECT productos.nombre AS Productos, productos.categoria AS Categoria
+FROM productos
+WHERE productos.precio > (
+    SELECT AVG(precio)
+    FROM productos
+);
