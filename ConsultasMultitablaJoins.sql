@@ -160,3 +160,13 @@ FROM productos
 JOIN proveedores_productos
     ON productos.producto_id = proveedores_productos.producto_id
 GROUP BY productos.nombre;
+
+-- 15. Para un proveedor determinado (p. ej. `proveedor_id = 3`), muestra el 
+-- nombre de todos los productos que suministra.
+
+SELECT 
+    productos.nombre AS Producto
+FROM productos
+JOIN proveedores_productos
+    ON productos.producto_id = proveedores_productos.producto_id
+WHERE proveedores_productos.proveedor_id = 3;
