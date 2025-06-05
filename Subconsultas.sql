@@ -60,3 +60,12 @@ WHERE usuarios.usuario_id IN (
         ) AS pedidos_por_cliente
     )
 );
+
+-- 6. Obtén los productos cuyo precio es superior al precio promedio de todos los productos.
+
+SELECT productos.nombre AS Producto,productos.precio AS Precio
+FROM productos
+WHERE productos.precio > (
+    SELECT AVG(productos.precio) 
+    FROM productos
+)
