@@ -102,3 +102,13 @@ WHERE productos.precio > (
     SELECT AVG(precio)
     FROM productos
 );
+
+-- 10. Encuentra el nombre del cliente que realizó el pedido más reciente.
+
+SELECT usuarios.nombre AS Nombre, usuarios.ciudad AS Ciudad, pedidos.fecha_pedido AS FechaPedido
+FROM usuarios
+JOIN pedidos ON usuarios.usuario_id = pedidos.cliente_id
+WHERE pedidos.fecha_pedido = (
+    SELECT MAX(fecha_pedido)
+    FROM pedidos
+);
