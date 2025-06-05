@@ -40,7 +40,8 @@ SELECT pedido_id,
         WHERE detalles_pedidos.pedido_id = pedidos.pedido_id
     )AS total_venta
 FROM pedidos
-ORDER BY total_venta DESC;
+ORDER BY total_venta DESC
+LIMIT 1;
 
 -- 5. Muestra los nombres de los clientes que han realizado 
 -- más pedidos que el promedio de pedidos de todos los clientes.
@@ -205,4 +206,17 @@ WHERE cliente_id IN (
     SELECT usuario_id
     FROM usuarios
     WHERE fecha_registro >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+);
+
+-- 19. Obtén el nombre del empleado que gestionó el mayor número de pedidos.
+
+SELECT usuarios.nombre
+FROM empleados
+JOIN usuarios ON empleados.usuario_id = usuarios.usuario_id
+WHERE empleados.empleado_id = (
+    SELECT empleado_id
+    FROM pedidos
+    GROUP BY empleado_id
+    ORDER BY COUNT(*) DESC
+    LIMIT 1
 );
