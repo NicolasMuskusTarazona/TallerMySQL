@@ -199,12 +199,3 @@ GROUP BY productos.producto_id, productos.nombre;
 
 -- 18. Cuenta cuántos productos suministra cada proveedor, mostrando
 -- `proveedor_id`, `nombre_proveedor` y `total_productos`.
-
-SELECT 
-    proveedores.proveedor_id,
-    proveedores.nombre AS nombre_proveedor,
-    COUNT(proveedores_productos.producto_id) AS total_productos
-FROM proveedores
-JOIN proveedores_productos
-    ON proveedores.proveedor_id = proveedores_productos.proveedor_id
-GROUP BY proveedores.proveedor_id, proveedores.nombre;

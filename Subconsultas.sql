@@ -1,4 +1,4 @@
--- Active: 1749036754683@@127.0.0.1@3307@taller
+-- Active: 1749052079316@@127.0.0.1@3307@taller
 
 -- 1. Encuentra los nombres de los clientes que han 
 -- realizado al menos un pedido de más de $500.000.
@@ -44,3 +44,19 @@ ORDER BY total_venta DESC;
 
 -- 5. Muestra los nombres de los clientes que han realizado 
 -- más pedidos que el promedio de pedidos de todos los clientes.
+
+SELECT usuarios.nombre AS Nombre
+FROM usuarios
+WHERE usuarios.usuario_id IN (
+    SELECT pedidos.cliente_id
+    FROM pedidos
+    GROUP BY pedidos.cliente_id
+    HAVING COUNT(*) > (
+        SELECT AVG(pedidos_por_cliente.total_pedidos)
+        FROM (
+            SELECT pedidos.cliente_id, COUNT(*) AS total_pedidos
+            FROM pedidos
+            GROUP BY pedidos.cliente_id
+        ) AS pedidos_por_cliente
+    )
+);
