@@ -171,3 +171,12 @@ WHERE (
     GROUP BY pedidos.cliente_id
     HAVING MIN(pedidos.fecha_pedido) = DATE_ADD(usuarios.fecha_registro, INTERVAL 1 YEAR)
 );
+
+-- 16. Encuentra los nombres de los productos que tienen un stock inferior al promedio del stock de todos los productos.
+
+SELECT productos.nombre AS Productos, productos.stock AS Stock
+FROM productos
+WHERE productos.stock < (
+    SELECT AVG(stock)
+    FROM productos
+);
