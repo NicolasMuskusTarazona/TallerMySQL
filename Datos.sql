@@ -1,4 +1,4 @@
--- Active: 1748978904024@@127.0.0.1@3307@taller
+-- Active: 1749069445371@@127.0.0.1@3307@taller
 INSERT INTO tipos_usuarios(nombre) VALUES ('Cliente'), ('Empleado');
 
 INSERT INTO usuarios (
@@ -66,7 +66,7 @@ INSERT INTO usuarios (
     (2, 'Rocío López',      'rocio.lopez@empresa.com',       NULL, NULL, NULL, NULL, '2022-02-20'),
     (2, 'Andrés Navas',     'andres.navas@empresa.com',      NULL, NULL, NULL, NULL, '2021-12-13');
     
-    INSERT INTO empleados (
+INSERT INTO empleados (
     usuario_id,
     puesto,
     fecha_contratacion,

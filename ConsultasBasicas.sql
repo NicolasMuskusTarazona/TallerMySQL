@@ -1,4 +1,4 @@
--- Active: 1748978904024@@127.0.0.1@3307@taller
+-- Active: 1749036754683@@127.0.0.1@3307@taller
 
 -- 1. Consulta todos los datos de la tabla `usuarios` para ver la lista completa de clientes.
 
