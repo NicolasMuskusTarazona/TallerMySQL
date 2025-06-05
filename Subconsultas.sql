@@ -160,3 +160,14 @@ ORDER BY productos.precio DESC
 LIMIT 1;
 
 
+-- 15. Lista los clientes cuyo primer pedido fue un año después de su registro.
+
+SELECT usuarios.*
+FROM usuarios
+WHERE (
+    SELECT 1
+    FROM pedidos
+    WHERE pedidos.cliente_id = usuarios.usuario_id
+    GROUP BY pedidos.cliente_id
+    HAVING MIN(pedidos.fecha_pedido) = DATE_ADD(usuarios.fecha_registro, INTERVAL 1 YEAR)
+);
