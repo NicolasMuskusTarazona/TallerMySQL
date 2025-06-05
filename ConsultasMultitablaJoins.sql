@@ -1,4 +1,4 @@
--- Active: 1749069445371@@127.0.0.1@3307@taller
+-- Active: 1749052079316@@127.0.0.1@3307@taller
 -- 1. Encuentra los nombres de los clientes y los detalles de sus pedidos.
 
 SELECT DISTINCT usuarios.nombre, detalles_pedidos.pedido_id, detalles_pedidos.cantidad, detalles_pedidos.precio_unitario
@@ -57,6 +57,7 @@ ON detalles_pedidos.producto_id = productos.producto_id;
 
 SELECT
     empleados.empleado_id,
+    usuarios.nombre AS Nombre,
     empleados.puesto AS Puesto,
     empleados.fecha_contratacion AS FechaContratacion,
     empleados.salario AS Salario,
@@ -64,7 +65,9 @@ SELECT
     pedidos.estado AS Estado
 FROM empleados
 LEFT JOIN pedidos
-ON empleados.empleado_id = pedidos.empleado_id;
+ON empleados.empleado_id = pedidos.empleado_id
+INNER JOIN usuarios
+ON empleados.usuario_id = usuarios.usuario_id;
 
 -- 7. Encuentra los empleados que no han gestionado ningún pedido usando un --`LEFT JOIN` combinado con `WHERE`.
 
@@ -144,12 +147,12 @@ WHERE proveedores.nombre = 'Tech Supplies S.A.';
 -- 13. Lista los proveedores que no están asociados a ningún producto 
 -- (es decir, que aún no suministran).
 
-SELECT
+SELECT DISTINCT
     proveedores.nombre AS Proveedor
 FROM proveedores
-JOIN proveedores_productos
+RIGHT JOIN proveedores_productos
     ON proveedores.proveedor_id = proveedores_productos.proveedor_id
-WHERE proveedores_productos.producto_id IS NULL;
+WHERE proveedores_productos.producto_id ;
 
 -- 14. Contar cuántos proveedores tiene cada producto.
 
