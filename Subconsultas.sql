@@ -30,3 +30,16 @@ SELECT DISTINCT
 FROM empleados
 JOIN pedidos ON empleados.empleado_id = pedidos.empleado_id
 WHERE pedidos.fecha_pedido >= DATE_SUB(NOW(), INTERVAL 6 MONTH);
+
+-- 4. Encuentra el pedido con el total de ventas más alto.
+
+SELECT 
+    detalles_pedidos.pedido_id,
+    SUM(detalles_pedidos.cantidad * detalles_pedidos.precio_unitario) AS total_venta
+FROM 
+    detalles_pedidos
+GROUP BY 
+    detalles_pedidos.pedido_id
+ORDER BY 
+    total_venta DESC
+LIMIT 1;
