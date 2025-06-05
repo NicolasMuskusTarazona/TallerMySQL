@@ -69,3 +69,18 @@ WHERE productos.precio > (
     SELECT AVG(productos.precio) 
     FROM productos
 )
+
+-- 7. Lista los clientes que han gastado más de $1.000.000 en total.
+
+SELECT usuarios.nombre AS Cliente
+FROM usuarios
+WHERE usuarios.usuario_id IN (
+    SELECT pedidos.cliente_id
+    FROM pedidos
+    WHERE pedidos.pedido_id IN (
+        SELECT detalles_pedidos.pedido_id
+        FROM detalles_pedidos
+        GROUP BY detalles_pedidos.pedido_id
+        HAVING SUM(detalles_pedidos.cantidad * detalles_pedidos.precio_unitario) > 1000000
+    )
+);
