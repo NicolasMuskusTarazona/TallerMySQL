@@ -121,6 +121,22 @@ SELECT
     productos.precio AS Precio
 FROM proveedores
 JOIN proveedores_productos
-ON proveedores.proveedor_id = proveedores_productos.proveedor_id
+    ON proveedores.proveedor_id = proveedores_productos.proveedor_id
 JOIN productos
-ON proveedores_productos.producto_id = productos.producto_id;
+    ON proveedores_productos.producto_id = productos.producto_id
+WHERE productos.nombre = 'Laptop';
+
+
+-- 12. Obtener todos los productos que ofrece un proveedor específico.
+
+SELECT
+    proveedores.nombre AS Proveedor,
+    productos.nombre AS Producto,
+    productos.categoria AS Categoria,
+    productos.precio AS Precio
+FROM proveedores
+JOIN proveedores_productos
+    ON proveedores.proveedor_id = proveedores_productos.proveedor_id
+JOIN productos
+    ON proveedores_productos.producto_id = productos.producto_id
+WHERE proveedores.nombre = 'Global Components Ltda.'; 
