@@ -77,13 +77,11 @@ FROM usuarios
 WHERE usuarios.usuario_id IN (
     SELECT pedidos.cliente_id
     FROM pedidos
-    WHERE pedidos.pedido_id IN (
-        SELECT detalles_pedidos.pedido_id
-        FROM detalles_pedidos
-        GROUP BY detalles_pedidos.pedido_id
-        HAVING SUM(detalles_pedidos.cantidad * detalles_pedidos.precio_unitario) > 1000000
-    )
+    JOIN detalles_pedidos ON pedidos.pedido_id = detalles_pedidos.pedido_id
+    GROUP BY pedidos.cliente_id
+    HAVING SUM(detalles_pedidos.cantidad * detalles_pedidos.precio_unitario) > 1000000
 );
+
 
 -- 8. Encuentra los empleados que ganan un salario mayor al promedio de la empresa.
 
@@ -96,12 +94,18 @@ WHERE empleados.salario > (
 
 -- 9. Obtén los productos que generaron ingresos mayores al ingreso promedio por producto.
 
-SELECT productos.nombre AS Productos, productos.categoria AS Categoria
+SELECT productos.nombre AS Producto, productos.categoria AS Categoria
 FROM productos
-WHERE productos.precio > (
-    SELECT AVG(precio)
-    FROM productos
+JOIN detalles_pedidos ON productos.producto_id = detalles_pedidos.producto_id
+GROUP BY productos.producto_id
+HAVING SUM(detalles_pedidos.cantidad * detalles_pedidos.precio_unitario) > (
+    SELECT AVG(ingreso_total) FROM (
+        SELECT SUM(cantidad * precio_unitario) AS ingreso_total
+        FROM detalles_pedidos
+        GROUP BY producto_id
+    ) AS ingresos_por_producto
 );
+
 
 -- 10. Encuentra el nombre del cliente que realizó el pedido más reciente.
 
@@ -164,13 +168,14 @@ LIMIT 1;
 
 SELECT usuarios.*
 FROM usuarios
-WHERE (
+WHERE(
     SELECT 1
     FROM pedidos
     WHERE pedidos.cliente_id = usuarios.usuario_id
     GROUP BY pedidos.cliente_id
     HAVING MIN(pedidos.fecha_pedido) = DATE_ADD(usuarios.fecha_registro, INTERVAL 1 YEAR)
 );
+
 
 -- 16. Encuentra los nombres de los productos que tienen un stock inferior al promedio del stock de todos los productos.
 
@@ -191,3 +196,13 @@ AND (
     FROM pedidos
     WHERE pedidos.cliente_id = usuarios.usuario_id
 ) < 3;
+
+-- 18. Encuentra los nombres de los productos que fueron pedidos por los clientes que registraron en el último año.
+
+SELECT pedido_id, cliente_id, fecha_pedido
+FROM pedidos
+WHERE cliente_id IN (
+    SELECT usuario_id
+    FROM usuarios
+    WHERE fecha_registro >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+);
