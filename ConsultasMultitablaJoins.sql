@@ -139,4 +139,15 @@ JOIN proveedores_productos
     ON proveedores.proveedor_id = proveedores_productos.proveedor_id
 JOIN productos
     ON proveedores_productos.producto_id = productos.producto_id
-WHERE proveedores.nombre = 'Global Components Ltda.'; 
+WHERE proveedores.nombre = 'Tech Supplies S.A.'; 
+
+-- 13. Lista los proveedores que no están asociados a ningún producto 
+-- (es decir, que aún no suministran).
+
+SELECT
+    proveedores.nombre AS Proveedor
+FROM proveedores
+JOIN proveedores_productos
+    ON proveedores.proveedor_id = proveedores_productos.proveedor_id
+WHERE proveedores_productos.producto_id IS NULL;
+
