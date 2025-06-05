@@ -193,3 +193,6 @@ FROM productos
 JOIN proveedores_productos
     ON productos.producto_id = proveedores_productos.producto_id
 GROUP BY productos.producto_id, productos.nombre;
+
+-- 18. Cuenta cuántos productos suministra cada proveedor, mostrando
+-- `proveedor_id`, `nombre_proveedor` y `total_productos`.
