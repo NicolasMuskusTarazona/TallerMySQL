@@ -132,3 +132,16 @@ WHERE empleados.empleado_id NOT IN (
     SELECT pedidos.empleado_id
     FROM pedidos
 )
+
+-- 13. Encuentra los clientes que han 
+-- comprado más de tres tipos distintos de productos.
+
+SELECT usuarios.nombre AS Nombre, usuarios.ciudad AS Ciudad
+FROM usuarios
+WHERE usuarios.usuario_id IN (
+    SELECT pedidos.cliente_id
+    FROM pedidos
+    JOIN detalles_pedidos ON pedidos.pedido_id = detalles_pedidos.pedido_id
+    GROUP BY pedidos.cliente_id
+    HAVING COUNT(DISTINCT detalles_pedidos.producto_id) > 3
+);

@@ -1,4 +1,4 @@
--- Active: 1749036754683@@127.0.0.1@3307@taller
+-- Active: 1749052079316@@127.0.0.1@3307@taller
 -- 1. Encuentra los nombres de los clientes y los detalles de sus pedidos.
 
 SELECT DISTINCT usuarios.nombre, detalles_pedidos.pedido_id, detalles_pedidos.cantidad, detalles_pedidos.precio_unitario
