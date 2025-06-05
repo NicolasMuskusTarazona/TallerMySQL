@@ -21,3 +21,12 @@ WHERE producto_id NOT IN (
     SELECT producto_id
     FROM detalles_pedidos
 );
+
+-- 3. Lista los empleados que han gestionado pedidos en los últimos seis meses.
+
+SELECT DISTINCT 
+    empleados.empleado_id, 
+    empleados.fecha_contratacion
+FROM empleados
+JOIN pedidos ON empleados.empleado_id = pedidos.empleado_id
+WHERE pedidos.fecha_pedido >= DATE_SUB(NOW(), INTERVAL 6 MONTH);
