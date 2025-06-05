@@ -1,4 +1,4 @@
--- Active: 1749069445371@@127.0.0.1@3307@taller
+-- Active: 1749036754683@@127.0.0.1@3307@taller
 
 -- 1. Encuentra los nombres de los clientes que han 
 -- realizado al menos un pedido de más de $500.000.
@@ -23,23 +23,24 @@ WHERE producto_id NOT IN (
 );
 
 -- 3. Lista los empleados que han gestionado pedidos en los últimos seis meses.
+SELECT DISTINCT empleados.empleado_id, empleados.fecha_contratacion
+FROM empleados 
+WHERE empleados.empleado_id IN (
+    SELECT pedidos.empleado_id
+    FROM pedidos
+    WHERE pedidos.fecha_pedido >= DATE_SUB(NOW(), INTERVAL 6 MONTH)
+);
 
-SELECT DISTINCT 
-    empleados.empleado_id, 
-    empleados.fecha_contratacion
-FROM empleados
-JOIN pedidos ON empleados.empleado_id = pedidos.empleado_id
-WHERE pedidos.fecha_pedido >= DATE_SUB(NOW(), INTERVAL 6 MONTH);
 
 -- 4. Encuentra el pedido con el total de ventas más alto.
 
-SELECT 
-    detalles_pedidos.pedido_id,
-    SUM(detalles_pedidos.cantidad * detalles_pedidos.precio_unitario) AS total_venta
-FROM 
-    detalles_pedidos
-GROUP BY 
-    detalles_pedidos.pedido_id
-ORDER BY 
-    total_venta DESC
-LIMIT 1;
+SELECT pedido_id,
+       (SELECT SUM(detalles_pedidos.cantidad * detalles_pedidos.precio_unitario)
+        FROM detalles_pedidos
+        WHERE detalles_pedidos.pedido_id = pedidos.pedido_id
+    )AS total_venta
+FROM pedidos
+ORDER BY total_venta DESC;
+
+-- 5. Muestra los nombres de los clientes que han realizado 
+-- más pedidos que el promedio de pedidos de todos los clientes.

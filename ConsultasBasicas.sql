@@ -31,16 +31,14 @@ ORDER BY nombre ASC;
 --    incluyendo el ID del pedido, el ID del cliente y la fecha del pedido.
 
 SELECT 
-    pedidos.cliente_id, 
-    pedidos.fecha_pedido, 
-    detalles_pedidos.pedido_id
+    cliente_id,
+    estado,
+    pedido_id,
+    fecha_pedido 
 FROM 
     pedidos
-JOIN 
-    detalles_pedidos 
-ON 
-    pedidos.pedido_id = detalles_pedidos.pedido_id;
-
+WHERE 
+    estado = 'Pendiente'
 -- 7. Encuentra el nombre y el precio del producto más caro en la base de datos.
 
 SELECT nombre, precio
