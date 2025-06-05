@@ -13,3 +13,11 @@ WHERE usuario_id IN (
     HAVING SUM(detalles_pedidos.precio_unitario * detalles_pedidos.cantidad) > 500000
 );
 
+-- 2. Muestra los productos que nunca han sido pedidos.
+
+SELECT nombre
+FROM productos
+WHERE producto_id NOT IN (
+    SELECT producto_id
+    FROM detalles_pedidos
+);
